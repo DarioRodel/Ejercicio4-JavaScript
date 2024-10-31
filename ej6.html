@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Selección Aleatoria</title>
+    <link rel="stylesheet" href="ej6.css">
+</head>
+<body>
+    <div id="container">
+        <h1>Selección aleatoria</h1>
+        <input type="text" id="inputName" placeholder="Inserta un nombre">
+        <button id="addBtn">Agregar</button>
+        <ul id="nameList"></ul>
+        <button id="randomBtn">Seleccionar aleatoriamente</button>
+    </div>
+    <script>
+        const nombre = document.getElementById('inputName');
+        const agregarBtn = document.getElementById('addBtn');
+        const listaNombres = document.getElementById('nameList');
+        const btnAleatorio = document.getElementById('randomBtn');
+
+        let nombres = [];
+
+        function agregarNombre() {
+            const nuevoNombre = nombre.value.trim();
+            if (nuevoNombre !== '') {
+                nombres.push(nuevoNombre);
+                mostrarNombres(); 
+                nombre.value = '';
+            }
+        }
+
+        function mostrarNombres() { 
+            listaNombres.innerHTML = '';
+            nombres.forEach(nombre => {
+                const lista = document.createElement('li');
+                lista.textContent = nombre;
+                listaNombres.appendChild(lista);
+            });
+        }
+
+        function seleccionarNombreAleatorio() {
+            if (nombres.length > 0) {
+                const aleatorio = Math.floor(Math.random() * nombres.length);
+                const nombreSeleccionado = nombres[aleatorio];
+                const listaSeleccionada = listaNombres.childNodes[aleatorio];
+                listaSeleccionada.classList.add('selected');
+                listaSeleccionada.textContent += ` - Se ha elegido: ${nombreSeleccionado}`;
+            } else {
+                alert('¡No hay nombres en la lista!');
+            }
+        }
+
+        agregarBtn.addEventListener('click', agregarNombre);
+        btnAleatorio.addEventListener('click', seleccionarNombreAleatorio);
+    </script>
+</body>
+</html>

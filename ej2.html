@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="ej1.css">
+</head>
+<body>
+    <div id="contenido-informatica">
+        <p id="texto-informatica">Algoritmo - frase utilizada por los programadores cuando no
+        quieren explicar lo que han hecho.</p>
+        <button id="ver-mas-boton">Ver más contenido</button>
+    </div>
+    <script>
+    const frasesInformatica = [
+        "Si no funciona apaga y enciende",
+        "Lo mejor es reiniciar",
+        "Utiliza python si quieres vivir más tiempo",
+    ];
+
+    const colorFrase = [
+        "#ff0000", "#00ff00", "#0000ff", "#ff00ff", "#00ffff", 
+        "#ff8000", "#8000ff", "#00ff80", "#ff0080", "#80ff00", 
+        "#0080ff", "#ffbf00", "#bf00ff", "#00ffbf", "#ff00bf",
+        "#80ff80", "#ff80ff", "#80ffff"
+    ];
+
+    function mostrarFrase() {
+        const aleatorioFrase = Math.floor(Math.random() * frasesInformatica.length);
+        const aleatorioColor = Math.floor(Math.random() * colorFrase.length);
+        
+        const texto = document.getElementById("texto-informatica");
+        const boton = document.getElementById("ver-mas-boton");
+
+        texto.textContent = frasesInformatica[aleatorioFrase];
+        texto.style.color = colorFrase[aleatorioColor];
+        boton.style.backgroundColor = colorFrase[aleatorioColor];
+    }
+
+    document.getElementById("ver-mas-boton").addEventListener("click", mostrarFrase);
+    </script> 
+</body>
+</html>

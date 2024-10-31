@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="ej1.css">
+</head>
+<body>
+    <div id="contenido-informatica">
+        <p id="texto-informatica">Algoritmo - frase utilizada por los programadores cuando no
+        quieren explicar lo que han hecho.</p>
+        <button id="ver-mas-boton">Ver más contenido</button>
+    </div>
+    <script>
+    const frasesInformatica = [
+    "Si no funciona apaga y enciende",
+    "Lo mejor es reiniciar",
+    "Utiliza python si quieres vivir mas tiempo",
+    ];
+
+function mostrarFrase() {
+    const aleatorio = Math.floor(Math.random() * frasesInformatica.length);
+    const elemento = document.getElementById("texto-informatica");
+    elemento.textContent = frasesInformatica[aleatorio];
+}
+
+document.getElementById("ver-mas-boton").addEventListener("click", mostrarFrase);
+
+    </script> 
+</body>
+</html>
